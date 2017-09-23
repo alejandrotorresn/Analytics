@@ -1,0 +1,14 @@
+# File to Insert
+# insert.json
+
+[{"firstname":"Juan Carlos","lastname":"Santos","username":"JCSantos"},{"firstname":"Luis","lastname":"Hernandez","username":"LHernandez"}]
+
+
+curl -v -s --trace-ascii http_trace.log -d @insert.json -H "Content-Type: application/json" -X POST http://localhost/user
+
+
+# Gzip
+gzip insert.json
+
+
+curl -v -s --trace-ascii http_trace.log --data-binary @insert.json.gz -H "Content-Type: application/json" -H "Content-Encoding: gzip" -X POST http://localhost/user
